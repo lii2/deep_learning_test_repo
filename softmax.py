@@ -1,6 +1,12 @@
 """Softmax."""
 with open(fname) as f:
-    scores = f.readlines()
+    input_ = f.readlines()
+    
+weights = [1, 1, 1]
+bias = [0, 0, 0]
+
+# linear modeling
+scores = weights*x + bias
 
 import numpy as np
 
