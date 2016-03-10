@@ -1,6 +1,6 @@
 """Softmax."""
-
-scores = [3.0, 1.0, 0.2]
+with open(fname) as f:
+    scores = f.readlines()
 
 import numpy as np
 
