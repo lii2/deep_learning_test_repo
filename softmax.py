@@ -1,6 +1,5 @@
-"""Softmax."""
-with open(fname) as f:
-    input_ = f.readlines()
+#written by Chi-Young Jeffrey Lii
+input_ = [3.0, 1.0, 0.2]
     
 weights = [1, 1, 1]
 bias = [0, 0, 0]
@@ -9,6 +8,7 @@ bias = [0, 0, 0]
 scores = weights*x + bias
 
 import numpy as np
+
 
 def softmax(x):
     """Compute softmax values for each sets of scores in x."""
