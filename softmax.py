@@ -1,14 +1,13 @@
 #written by Chi-Young Jeffrey Lii
-input_ = [3.0, 1.0, 0.2]
-    
-weights = [1, 1, 1]
-bias = [0, 0, 0]
-
-# linear modeling
-scores = weights*x + bias
-
 import numpy as np
 
+input_ = np.array([3.0, 1.0, 0.2])
+    
+weights = np.array([1, 1, 1])
+bias = np.array([0, 0, 0])
+
+# linear modeling
+scores = input_*weights + bias
 
 def softmax(x):
     """Compute softmax values for each sets of scores in x."""
