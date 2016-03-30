@@ -1,0 +1,46 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar 28 23:44:52 2016
+
+@author: Lii2
+"""
+
+import numpy as np
+
+class MLR_Trainer(object):
+    """a class that encapsulates the MLR algorithms,
+    to train the weights and biases"""
+    
+    def __init__(self, x=0,y=0):
+        """initializes the parameters of the model upon when an instant of the class is created"""
+        self.sets_of_features = x        
+        self.correct_labels = y
+        
+        [self.number_of_sets,self.number_of_features] = x.shape
+        [k,self.number_of_classes] = y.shape
+
+        if(self.number_of_sets != k):
+            print("The number of sets in X does not equal the number of sets in Y")
+
+        if(x!=0):
+            self.W=np.ones([self.number_of_features,self.number_of_classes],dtype=float);
+            self.b=np.ones([self.number_of_sets,self.number_of_classes],dtype=float);     
+        
+        else:
+            self.W=[];
+            self.b=[];
+        
+        self.logits = self.calculate_logits()
+    
+    def calculate_logits(self):
+        """calculates the logits of input vector x 
+        in the form of a number_of_features x number_of_classes vector 
+        by implementing the softmax algorithm """
+        vec=np.dot(self.sets_of_features,self.W)+self.b; #y = wx+b
+   
+        vec1 = np.exp(vec); #the softmax func logit = exp(y)/denom(y)
+        logits = vec1.T/np.sum(vec1,axis=1);
+        return logits.T
+    
+    def cross_entropy_of(self,y):
+        """calculates the cross entropy of an individual set"""
